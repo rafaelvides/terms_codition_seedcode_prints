@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Términos y Privacidad | Bluetooth Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --secondary: #60a5fa;
+        --accent: #3b82f6;
+        --success: #10b981;
+        --text: #0f172a;
+        --text-light: #475569;
+        --muted: #64748b;
+        --bg-main: #f8fafc;
+        --card-bg: #ffffff;
+        --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+        --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+        --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
+        --radius: 20px;
+        --radius-sm: 12px;
+        scroll-behavior: smooth;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bg-main);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* Animated background */
+      .bg-animated {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(
+          135deg,
+          #eff6ff 0%,
+          #f1f5f9 50%,
+          #e0f2fe 100%
+        );
+        opacity: 0.7;
+      }
+
+      .bg-animated::before,
+      .bg-animated::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        animation: float 20s ease-in-out infinite;
+      }
+
+      .bg-animated::before {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, #3b82f6, transparent);
+        top: -100px;
+        right: -100px;
+        animation-delay: -5s;
+      }
+
+      .bg-animated::after {
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, #60a5fa, transparent);
+        bottom: -150px;
+        left: -150px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -30px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(20px) saturate(180%);
+        background: rgba(255, 255, 255, 0.85);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        box-shadow: var(--shadow-sm);
+        z-index: 100;
+        animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+
+      .logo-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: white;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text-light);
+        text-decoration: none;
+        position: relative;
+        padding: 8px 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 2px;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero section */
+      .hero {
+        text-align: center;
+        padding: 100px 30px 80px;
+        max-width: 900px;
+        margin: 0 auto;
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(96, 165, 250, 0.1)
+        );
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 30px;
+      }
+
+      .hero-badge::before {
+        content: "🚀";
+        font-size: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+
+      .hero-features {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+      }
+
+      .feature-pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        background: white;
+        border-radius: 50px;
+        box-shadow: var(--shadow-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text);
+        transition: all 0.3s ease;
+      }
+
+      .feature-pill:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .feature-pill::before {
+        content: "✓";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, var(--success), #059669);
+        color: white;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      /* Content */
+      .content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 30px 100px;
+      }
+
+      section {
+        background: var(--card-bg);
+        box-shadow: var(--shadow-md);
+        border-radius: var(--radius);
+        padding: 50px 60px;
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: both;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      section:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      section:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--primary), var(--secondary));
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f1f5f9;
+      }
+
+      .section-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+      }
+
+      .section-icon svg {
+        width: 26px;
+        height: 26px;
+        stroke: white;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      section h2 {
+        color: var(--text);
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
+
+      .date-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        background: #f1f5f9;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-light);
+        margin-bottom: 30px;
+      }
+
+      section h3 {
+        color: var(--primary);
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 40px 0 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      section h3::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+      }
+
+      section p {
+        color: var(--text-light);
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-top: 12px;
+      }
+
+      section ul {
+        margin: 20px 0 20px 25px;
+        list-style: none;
+      }
+
+      section ul li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        color: var(--text-light);
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      section ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      section strong {
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      section a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+
+      section a:hover {
+        border-bottom-color: var(--primary);
+      }
+
+      /* Info boxes */
+      .info-box {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.05),
+          rgba(96, 165, 250, 0.05)
+        );
+        border-left: 4px solid var(--primary);
+        border-radius: var(--radius-sm);
+        padding: 20px 25px;
+        margin: 25px 0;
+      }
+
+      .info-box p {
+        margin: 0;
+        color: var(--text);
+      }
+
+      /* Footer */
+      footer {
+        background: white;
+        border-top: 1px solid rgba(148, 163, 184, 0.1);
+        padding: 60px 30px;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .footer-logo-icon {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+
+      .footer-logo-icon svg {
+        width: 26px;
+        height: 26px;
+        stroke: white;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .footer-logo span {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary);
+      }
+
+      .footer-text {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      .footer-divider {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        margin: 30px auto;
+        border-radius: 2px;
+      }
+
+      .footer-copyright {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      /* Animations */
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 20px;
+          padding: 20px;
+        }
+
+        .nav-links {
+          gap: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links a {
+          font-size: 0.85rem;
+        }
+
+        .hero {
+          padding: 60px 20px 50px;
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero p {
+          font-size: 1.05rem;
+        }
+
+        .hero-features {
+          gap: 15px;
+        }
+
+        .feature-pill {
+          font-size: 0.8rem;
+          padding: 10px 18px;
+        }
+
+        section {
+          padding: 35px 25px;
+          margin-bottom: 30px;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        section h2 {
+          font-size: 1.6rem;
+        }
+
+        section h3 {
+          font-size: 1.2rem;
+        }
+
+        section p,
+        section ul li {
+          font-size: 0.95rem;
+        }
+
+        .content {
+          padding: 0 20px 60px;
+        }
+      }
+
+      /* Scroll progress bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        z-index: 101;
+        transition: width 0.1s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Animated background -->
+    <div class="bg-animated"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17 8h1a4 4 0 0 1 4 4v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h14a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4h-1"
+              />
+              <path d="M7 12h10" />
+              <path d="M7 16h6" />
+            </svg>
+          </div>
+          Bluetooth Ticket
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#terminos">Términos y Condiciones</a></li>
+            <li><a href="#privacidad">Privacidad y Seguridad</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">Versión 1.0 Disponible</div>
+      <h1>Bluetooth Ticket</h1>
+      <p>
+        Conectividad Bluetooth inteligente para impresoras portátiles con
+        impresión automática en segundo plano y sincronización avanzada por
+        socket. Diseñado para empresas que buscan eficiencia y control total.
+      </p>
+      <div class="hero-features">
+        <div class="feature-pill">Conexión Bluetooth</div>
+        <div class="feature-pill">Impresión en 2do Plano</div>
+        <div class="feature-pill">Socket Real-Time</div>
+        <div class="feature-pill">100% Seguro</div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Términos -->
+      <section id="terminos">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          <h2>Términos y Condiciones</h2>
+        </div>
+
+        <div class="date-badge">
+          📅 Fecha de entrada en vigor: 13 de octubre, 2025
+        </div>
+
+        <h3>1. Aceptación de los Términos</h3>
+        <p>
+          Al descargar, instalar o usar la aplicación
+          <strong>Bluetooth Ticket</strong>, aceptas de manera expresa y
+          vinculante estos Términos y Condiciones. Si no estás de acuerdo con
+          alguna parte de estos términos, no deberás utilizar la aplicación.
+        </p>
+
+        <h3>2. Descripción del Servicio</h3>
+        <p>
+          <strong>Bluetooth Ticket</strong> es una aplicación móvil que permite:
+        </p>
+        <ul>
+          <li>
+            Habilitar y gestionar conexiones Bluetooth con dispositivos
+            emparejados
+          </li>
+          <li>Listar y conectar impresoras portátiles compatibles</li>
+          <li>
+            Recibir y procesar trabajos de impresión automáticamente desde un
+            servidor remoto
+          </li>
+          <li>
+            Ejecutar servicios en segundo plano para mantener conexión activa
+          </li>
+          <li>
+            Solicitar exclusión de optimización de batería para funcionamiento
+            continuo
+          </li>
+        </ul>
+
+        <div class="info-box">
+          <p>
+            <strong>Nota importante:</strong> La aplicación requiere
+            dispositivos Bluetooth compatibles y permisos específicos del
+            sistema operativo para funcionar correctamente.
+          </p>
+        </div>
+
+        <h3>3. Permisos y Uso Autorizado</h3>
+        <p>La aplicación requiere los siguientes permisos:</p>
+        <ul>
+          <li>
+            <strong>Bluetooth:</strong> Para detectar, emparejar y conectar
+            impresoras
+          </li>
+          <li>
+            <strong>Segundo plano:</strong> Para mantener la conexión y procesar
+            impresiones
+          </li>
+          <li>
+            <strong>Optimización de batería:</strong> Exclusión opcional para
+            evitar interrupciones
+          </li>
+          <li>
+            <strong>Almacenamiento:</strong> Para guardar configuraciones y
+            registros locales
+          </li>
+          <li>
+            <strong>Red:</strong> Para comunicación con servidores de socket
+          </li>
+        </ul>
+
+        <h3>4. Responsabilidades del Usuario</h3>
+        <p>El usuario se compromete a:</p>
+        <ul>
+          <li>
+            Utilizar la aplicación únicamente con fines legales y legítimos
+          </li>
+          <li>
+            No interceptar, manipular o alterar comunicaciones Bluetooth de
+            terceros
+          </li>
+          <li>
+            Mantener activos los permisos necesarios para el correcto
+            funcionamiento
+          </li>
+          <li>
+            No realizar ingeniería inversa, modificar o distribuir versiones
+            alteradas
+          </li>
+          <li>
+            Proteger sus credenciales y configuraciones de acceso no autorizado
+          </li>
+        </ul>
+
+        <h3>5. Propiedad Intelectual</h3>
+        <p>
+          Todo el código fuente, diseño, interfaz de usuario, documentación y
+          elementos gráficos de <strong>Bluetooth Ticket</strong> son propiedad
+          exclusiva de su desarrollador. Se otorga únicamente una licencia de
+          uso personal, limitada, no transferible y revocable.
+        </p>
+
+        <h3>6. Limitación de Responsabilidad</h3>
+        <p>
+          La aplicación se entrega "tal cual" sin garantías de ningún tipo. No
+          se garantiza compatibilidad con todas las impresoras Bluetooth del
+          mercado. El desarrollador no se responsabiliza por:
+        </p>
+        <ul>
+          <li>
+            Daños, pérdidas o errores de impresión derivados de uso inadecuado
+          </li>
+          <li>
+            Incompatibilidades con dispositivos o sistemas operativos
+            específicos
+          </li>
+          <li>Pérdida de datos causada por fallos del dispositivo o red</li>
+          <li>
+            Interrupciones del servicio por causas ajenas al control del
+            desarrollador
+          </li>
+        </ul>
+
+        <h3>7. Modificaciones y Actualizaciones</h3>
+        <p>
+          Nos reservamos el derecho de modificar, actualizar o descontinuar la
+          aplicación en cualquier momento sin previo aviso. Los cambios en estos
+          términos se notificarán dentro de la aplicación.
+        </p>
+
+        <h3>8. Jurisdicción y Ley Aplicable</h3>
+        <p>
+          Estos términos se rigen por las leyes de <strong>El Salvador</strong>.
+          Cualquier disputa derivada del uso de la aplicación se resolverá en
+          los tribunales competentes de San Salvador.
+        </p>
+      </section>
+
+      <!-- Privacidad -->
+      <section id="privacidad">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <h2>Política de Privacidad y Seguridad</h2>
+        </div>
+
+        <p>
+          En <strong>Bluetooth Ticket</strong> tu privacidad es nuestra
+          prioridad. Esta política detalla cómo recopilamos, utilizamos y
+          protegemos tu información personal de acuerdo con las mejores
+          prácticas de la industria.
+        </p>
+
+        <h3>1. Información que Recopilamos</h3>
+
+        <p><strong>Datos Técnicos del Dispositivo:</strong></p>
+        <ul>
+          <li>Nombre y dirección MAC Bluetooth de dispositivos emparejados</li>
+          <li>Modelo, fabricante y capacidades de la impresora conectada</li>
+          <li>Estado de conexión y nivel de señal Bluetooth</li>
+          <li>Versión del sistema operativo y modelo del dispositivo móvil</li>
+        </ul>
+
+        <p><strong>Datos de Uso y Operación:</strong></p>
+        <ul>
+          <li>Historial de impresiones realizadas (fecha, hora, estado)</li>
+          <li>Registros de errores y diagnósticos de conexión</li>
+          <li>Configuración de servicios en segundo plano</li>
+          <li>Preferencias de usuario y ajustes de la aplicación</li>
+        </ul>
+
+        <p><strong>Datos Opcionales Proporcionados:</strong></p>
+        <ul>
+          <li>Nombre de usuario o alias (si se configura)</li>
+          <li>Información de contacto para soporte técnico (opcional)</li>
+        </ul>
+
+        <h3>2. Finalidad del Tratamiento de Datos</h3>
+        <p>Los datos recopilados se utilizan exclusivamente para:</p>
+        <ul>
+          <li>Establecer y mantener conexiones Bluetooth con impresoras</li>
+          <li>Procesar y ejecutar trabajos de impresión de manera local</li>
+          <li>
+            Sincronizar datos con servidores remotos mediante socket seguro
+          </li>
+          <li>Diagnosticar y resolver problemas técnicos</li>
+          <li>
+            Mejorar la experiencia de usuario y funcionalidad de la aplicación
+          </li>
+        </ul>
+
+        <div class="info-box">
+          <p>
+            <strong>Importante:</strong> No compartimos tus datos personales con
+            terceros sin tu consentimiento explícito. Toda la información se
+            procesa localmente en tu dispositivo.
+          </p>
+        </div>
+
+        <h3>3. Seguridad y Protección de Datos</h3>
+        <p>Implementamos múltiples capas de seguridad:</p>
+        <ul>
+          <li>
+            <strong>Almacenamiento local:</strong> Toda la información se guarda
+            cifrada en el dispositivo
+          </li>
+          <li>
+            <strong>Cifrado de comunicaciones:</strong> Conexiones socket
+            seguras con protocolo wss://
+          </li>
+          <li>
+            <strong>Aislamiento de datos:</strong> Uso de almacenamiento privado
+            de la aplicación
+          </li>
+          <li>
+            <strong>No hay servidores externos:</strong> Los datos no se envían
+            a servicios de terceros
+          </li>
+          <li>
+            <strong>Autenticación:</strong> Control de acceso mediante tokens y
+            sesiones seguras
+          </li>
+        </ul>
+
+        <h3>4. Derechos del Usuario</h3>
+        <p>Como usuario de Bluetooth Ticket, tienes derecho a:</p>
+        <ul>
+          <li>
+            <strong>Acceder:</strong> Ver todos los datos almacenados en
+            cualquier momento
+          </li>
+          <li>
+            <strong>Rectificar:</strong> Modificar información incorrecta o
+            desactualizada
+          </li>
+          <li>
+            <strong>Eliminar:</strong> Borrar toda tu información desde la
+            configuración de la app
+          </li>
+          <li>
+            <strong>Revocar permisos:</strong> Desactivar acceso a Bluetooth,
+            segundo plano, etc.
+          </li>
+          <li>
+            <strong>Exportar datos:</strong> Obtener copia de tu información en
+            formato legible
+          </li>
+          <li>
+            <strong>Desinstalación completa:</strong> Toda la información se
+            elimina al desinstalar
+          </li>
+        </ul>
+
+        <h3>5. Retención de Datos</h3>
+        <p>
+          Los datos se conservan únicamente mientras la aplicación esté
+          instalada y en uso activo. Puedes eliminar toda la información en
+          cualquier momento desde la configuración de la aplicación. Al
+          desinstalar, todos los datos locales se borran automáticamente.
+        </p>
+
+        <h3>6. Cookies y Tecnologías de Seguimiento</h3>
+        <p>
+          <strong
+            >Bluetooth Ticket NO utiliza cookies, analytics ni servicios de
+            seguimiento de terceros.</strong
+          >
+          No recopilamos información de comportamiento ni creamos perfiles de
+          usuario.
+        </p>
+
+        <h3>7. Privacidad de Menores</h3>
+        <p>
+          La aplicación está diseñada para uso profesional y empresarial. No
+          está dirigida a menores de 18 años y no recopilamos intencionalmente
+          información de menores.
+        </p>
+
+        <h3>8. Cambios en la Política de Privacidad</h3>
+        <p>
+          Esta política puede actualizarse periódicamente para reflejar cambios
+          en nuestras prácticas o requisitos legales. La versión vigente siempre
+          estará disponible dentro de la aplicación. Los cambios significativos
+          se notificarán con 30 días de anticipación.
+        </p>
+
+        <h3>9. Transferencias Internacionales</h3>
+        <p>
+          Los datos se procesan y almacenan localmente en tu dispositivo. Si
+          utilizas servicios de sincronización en la nube (opcional), los datos
+          pueden transferirse a servidores ubicados en tu región geográfica bajo
+          protocolos de seguridad estándar de la industria.
+        </p>
+
+        <h3>10. Contacto y Soporte</h3>
+        <p>
+          Para consultas, solicitudes o ejercer tus derechos sobre privacidad de
+          datos, puedes contactarnos en:
+        </p>
+        <div class="info-box">
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:seedcodesv@gmail.com">seedcodesv@gmail.com</a><br />
+            <strong>Desarrollador:</strong> SeedCode Development Team<br />
+            <strong>Tiempo de respuesta:</strong> 48-72 horas hábiles
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17 8h1a4 4 0 0 1 4 4v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h14a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4h-1"
+              />
+              <path d="M7 12h10" />
+              <path d="M7 16h6" />
+            </svg>
+          </div>
+          <span>Bluetooth Ticket</span>
+        </div>
+        <p class="footer-text">
+          Solución profesional para impresión Bluetooth en tiempo real
+        </p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">
+          © 2025 Bluetooth Ticket · Desarrollado por <strong>SeedCode</strong> ·
+          Todos los derechos reservados
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll progress bar
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scrollProgress").style.width = scrolled + "%";
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
