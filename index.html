@@ -677,9 +677,9 @@
     <div class="content">
       <!-- Términos -->
       <section id="terminos">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24">
+        <div className="section-header">
+          <div className="section-icon">
+            <!-- <svg viewBox="0 0 24 24">
               <path
                 d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
               />
@@ -687,12 +687,12 @@
               <line x1="16" y1="13" x2="8" y2="13" />
               <line x1="16" y1="17" x2="8" y2="17" />
               <polyline points="10 9 9 9 8 9" />
-            </svg>
+            </svg> -->
           </div>
           <h2>Términos y Condiciones</h2>
         </div>
 
-        <div class="date-badge">
+        <div className="date-badge">
           📅 Fecha de entrada en vigor: 13 de octubre, 2025
         </div>
 
@@ -725,9 +725,13 @@
             Solicitar exclusión de optimización de batería para funcionamiento
             continuo
           </li>
+          <li>
+            Recopilar datos de ubicación geográfica para diagnóstico de errores
+            y optimización del servicio
+          </li>
         </ul>
 
-        <div class="info-box">
+        <div className="info-box">
           <p>
             <strong>Nota importante:</strong> La aplicación requiere
             dispositivos Bluetooth compatibles y permisos específicos del
@@ -757,7 +761,29 @@
           <li>
             <strong>Red:</strong> Para comunicación con servidores de socket
           </li>
+          <li>
+            <strong>Ubicación (GPS):</strong> Para registro de coordenadas
+            geográficas al momento de detectar errores en la aplicación,
+            permitiendo identificar la ubicación exacta donde se originó el
+            problema, tanto en primer plano como en ejecución en segundo plano
+          </li>
         </ul>
+
+        <div className="info-box">
+          <p>
+            <strong>📍 Uso de Ubicación:</strong> Los datos de ubicación se
+            recopilan exclusivamente cuando ocurre un error o fallo en la
+            aplicación. Esta información se utiliza para: <br />• Identificar
+            patrones geográficos de errores <br />• Mejorar la estabilidad del
+            servicio en ubicaciones específicas <br />• Diagnosticar problemas
+            de conectividad relacionados con la ubicación <br />• Optimizar el
+            rendimiento según zona geográfica
+            <br />
+            <br />
+            La ubicación NO se rastrea continuamente, solo se captura en el
+            momento exacto del error junto con los detalles técnicos del fallo.
+          </p>
+        </div>
 
         <h3>4. Responsabilidades del Usuario</h3>
         <p>El usuario se compromete a:</p>
@@ -780,17 +806,55 @@
           <li>
             Proteger sus credenciales y configuraciones de acceso no autorizado
           </li>
+          <li>
+            Autorizar el acceso a la ubicación para mejorar la calidad del
+            servicio mediante diagnóstico de errores
+          </li>
         </ul>
 
-        <h3>5. Propiedad Intelectual</h3>
+        <h3>5. Recopilación de Datos de Ubicación para Diagnóstico</h3>
+        <p>
+          La aplicación recopila coordenadas GPS
+          <strong>únicamente cuando se detecta un error o fallo</strong> en el
+          sistema. Esta funcionalidad opera de la siguiente manera:
+        </p>
+        <ul>
+          <li>
+            <strong>Momento de captura:</strong> La ubicación se registra
+            instantáneamente al momento de producirse un error, fallo de
+            conexión, o problema técnico
+          </li>
+          <li>
+            <strong>Funcionamiento en segundo plano:</strong> Si el error ocurre
+            mientras la app está en segundo plano, la ubicación se captura
+            automáticamente junto con los detalles del error
+          </li>
+          <li>
+            <strong>Datos asociados:</strong> Junto con las coordenadas se
+            registra: timestamp, tipo de error, estado de la aplicación, y
+            información técnica del dispositivo
+          </li>
+          <li>
+            <strong>Finalidad exclusiva:</strong> Identificar ubicaciones
+            geográficas donde los errores son más frecuentes para mejorar la
+            estabilidad del servicio
+          </li>
+          <li>
+            <strong>No rastreo continuo:</strong> La app NO realiza seguimiento
+            constante de ubicación, solo captura coordenadas en eventos de error
+          </li>
+        </ul>
+
+        <h3>6. Propiedad Intelectual</h3>
         <p>
           Todo el código fuente, diseño, interfaz de usuario, documentación y
-          elementos gráficos de <strong>Bluetooth Ticket</strong> son propiedad
-          exclusiva de su desarrollador. Se otorga únicamente una licencia de
-          uso personal, limitada, no transferible y revocable.
+          elementos gráficos de{" "}
+          <strong>Bluetooth Ticket</strong> son propiedad exclusiva de su
+          desarrollador. Se otorga únicamente una licencia de uso personal,
+          limitada, no transferible y revocable.
         </p>
 
-        <h3>6. Limitación de Responsabilidad</h3>
+        <h3>7. Limitación de Responsabilidad</h3>
         <p>
           La aplicación se entrega "tal cual" sin garantías de ningún tipo. No
           se garantiza compatibilidad con todas las impresoras Bluetooth del
@@ -809,16 +873,19 @@
             Interrupciones del servicio por causas ajenas al control del
             desarrollador
           </li>
+          <li>
+            Uso indebido de los datos de ubicación por terceros no autorizados
+          </li>
         </ul>
 
-        <h3>7. Modificaciones y Actualizaciones</h3>
+        <h3>8. Modificaciones y Actualizaciones</h3>
         <p>
           Nos reservamos el derecho de modificar, actualizar o descontinuar la
           aplicación en cualquier momento sin previo aviso. Los cambios en estos
           términos se notificarán dentro de la aplicación.
         </p>
 
-        <h3>8. Jurisdicción y Ley Aplicable</h3>
+        <h3>9. Jurisdicción y Ley Aplicable</h3>
         <p>
           Estos términos se rigen por las leyes de <strong>El Salvador</strong>.
           Cualquier disputa derivada del uso de la aplicación se resolverá en
@@ -827,180 +894,301 @@
       </section>
 
       <!-- Privacidad -->
-      <section id="privacidad">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-          </div>
-          <h2>Política de Privacidad y Seguridad</h2>
+       <section id="privacidad">
+      <div className="section-header">
+        <div className="section-icon">
+          <!-- <svg viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg> -->
         </div>
+        <h2>Política de Privacidad y Seguridad</h2>
+      </div>
 
+      <p>
+        En <strong>Bluetooth Ticket</strong> tu privacidad es nuestra prioridad. Esta política detalla cómo recopilamos,
+        utilizamos y protegemos tu información personal de acuerdo con las mejores prácticas de la industria.
+      </p>
+
+      <h3>1. Información que Recopilamos</h3>
+
+      <p>
+        <strong>Datos Técnicos del Dispositivo:</strong>
+      </p>
+      <ul>
+        <li>Nombre y dirección MAC Bluetooth de dispositivos emparejados</li>
+        <li>Modelo, fabricante y capacidades de la impresora conectada</li>
+        <li>Estado de conexión y nivel de señal Bluetooth</li>
+        <li>Versión del sistema operativo y modelo del dispositivo móvil</li>
+      </ul>
+
+      <p>
+        <strong>Datos de Uso y Operación:</strong>
+      </p>
+      <ul>
+        <li>Historial de impresiones realizadas (fecha, hora, estado)</li>
+        <li>Registros de errores y diagnósticos de conexión</li>
+        <li>Configuración de servicios en segundo plano</li>
+        <li>Preferencias de usuario y ajustes de la aplicación</li>
+      </ul>
+
+      <p>
+        <strong>Datos de Ubicación Geográfica (Solo en Caso de Errores):</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Coordenadas GPS (latitud/longitud):</strong> Se recopilan automáticamente cuando ocurre un error,
+          fallo o problema técnico en la aplicación
+        </li>
+        <li>
+          <strong>Timestamp de ubicación:</strong> Fecha y hora exacta cuando se capturó la coordenada
+        </li>
+        <li>
+          <strong>Contexto del error:</strong> Tipo de error, código de fallo, estado de la aplicación en ese momento
+        </li>
+        <li>
+          <strong>Funcionamiento en segundo plano:</strong> La ubicación se captura incluso cuando la app está corriendo
+          en segundo plano si se produce un error
+        </li>
+        <li>
+          <strong>Precisión de ubicación:</strong> Se utiliza la precisión aproximada para minimizar el consumo de
+          batería
+        </li>
+      </ul>
+
+      <div className="info-box">
         <p>
-          En <strong>Bluetooth Ticket</strong> tu privacidad es nuestra
-          prioridad. Esta política detalla cómo recopilamos, utilizamos y
-          protegemos tu información personal de acuerdo con las mejores
-          prácticas de la industria.
+          <strong>🗺️ Importante sobre Ubicación:</strong> Los datos de ubicación NO se rastrean de forma continua. Solo
+          se captura la coordenada geográfica en el momento exacto en que la aplicación detecta un error o fallo. Esta
+          información es crucial para:
+          <br />• <strong>Identificar zonas problemáticas:</strong> Detectar si ciertos errores son más frecuentes en
+          ubicaciones específicas
+          <br />• <strong>Optimizar cobertura:</strong> Mejorar el servicio en áreas geográficas donde se registran más
+          problemas
+          <br />• <strong>Diagnóstico técnico:</strong> Correlacionar errores con factores geográficos (conectividad,
+          interferencias, etc.)
+          <br />• <strong>Soporte técnico:</strong> Proporcionar asistencia más efectiva conociendo dónde ocurrió el
+          problema
         </p>
+      </div>
 
-        <h3>1. Información que Recopilamos</h3>
+      <p>
+        <strong>Datos Opcionales Proporcionados:</strong>
+      </p>
+      <ul>
+        <li>Nombre de usuario o alias (si se configura)</li>
+        <li>Información de contacto para soporte técnico (opcional)</li>
+      </ul>
 
-        <p><strong>Datos Técnicos del Dispositivo:</strong></p>
-        <ul>
-          <li>Nombre y dirección MAC Bluetooth de dispositivos emparejados</li>
-          <li>Modelo, fabricante y capacidades de la impresora conectada</li>
-          <li>Estado de conexión y nivel de señal Bluetooth</li>
-          <li>Versión del sistema operativo y modelo del dispositivo móvil</li>
-        </ul>
+      <h3>2. Finalidad del Tratamiento de Datos</h3>
+      <p>Los datos recopilados se utilizan exclusivamente para:</p>
+      <ul>
+        <li>Establecer y mantener conexiones Bluetooth con impresoras</li>
+        <li>Procesar y ejecutar trabajos de impresión de manera local</li>
+        <li>Sincronizar datos con servidores remotos mediante socket seguro</li>
+        <li>Diagnosticar y resolver problemas técnicos mediante análisis de ubicación de errores</li>
+        <li>Mejorar la experiencia de usuario y funcionalidad de la aplicación</li>
+        <li>
+          <strong>Análisis geográfico de errores:</strong> Identificar patrones de fallos según ubicación para optimizar
+          el servicio en áreas específicas
+        </li>
+        <li>
+          <strong>Monitoreo de estabilidad:</strong> Evaluar el rendimiento de la aplicación en diferentes zonas
+          geográficas
+        </li>
+        <li>
+          <strong>Prevención de errores futuros:</strong> Anticipar y prevenir problemas en ubicaciones donde
+          históricamente han ocurrido más fallos
+        </li>
+      </ul>
 
-        <p><strong>Datos de Uso y Operación:</strong></p>
-        <ul>
-          <li>Historial de impresiones realizadas (fecha, hora, estado)</li>
-          <li>Registros de errores y diagnósticos de conexión</li>
-          <li>Configuración de servicios en segundo plano</li>
-          <li>Preferencias de usuario y ajustes de la aplicación</li>
-        </ul>
-
-        <p><strong>Datos Opcionales Proporcionados:</strong></p>
-        <ul>
-          <li>Nombre de usuario o alias (si se configura)</li>
-          <li>Información de contacto para soporte técnico (opcional)</li>
-        </ul>
-
-        <h3>2. Finalidad del Tratamiento de Datos</h3>
-        <p>Los datos recopilados se utilizan exclusivamente para:</p>
-        <ul>
-          <li>Establecer y mantener conexiones Bluetooth con impresoras</li>
-          <li>Procesar y ejecutar trabajos de impresión de manera local</li>
-          <li>
-            Sincronizar datos con servidores remotos mediante socket seguro
-          </li>
-          <li>Diagnosticar y resolver problemas técnicos</li>
-          <li>
-            Mejorar la experiencia de usuario y funcionalidad de la aplicación
-          </li>
-        </ul>
-
-        <div class="info-box">
-          <p>
-            <strong>Importante:</strong> No compartimos tus datos personales con
-            terceros sin tu consentimiento explícito. Toda la información se
-            procesa localmente en tu dispositivo.
-          </p>
-        </div>
-
-        <h3>3. Seguridad y Protección de Datos</h3>
-        <p>Implementamos múltiples capas de seguridad:</p>
-        <ul>
-          <li>
-            <strong>Almacenamiento local:</strong> Toda la información se guarda
-            cifrada en el dispositivo
-          </li>
-          <li>
-            <strong>Cifrado de comunicaciones:</strong> Conexiones socket
-            seguras con protocolo wss://
-          </li>
-          <li>
-            <strong>Aislamiento de datos:</strong> Uso de almacenamiento privado
-            de la aplicación
-          </li>
-          <li>
-            <strong>No hay servidores externos:</strong> Los datos no se envían
-            a servicios de terceros
-          </li>
-          <li>
-            <strong>Autenticación:</strong> Control de acceso mediante tokens y
-            sesiones seguras
-          </li>
-        </ul>
-
-        <h3>4. Derechos del Usuario</h3>
-        <p>Como usuario de Bluetooth Ticket, tienes derecho a:</p>
-        <ul>
-          <li>
-            <strong>Acceder:</strong> Ver todos los datos almacenados en
-            cualquier momento
-          </li>
-          <li>
-            <strong>Rectificar:</strong> Modificar información incorrecta o
-            desactualizada
-          </li>
-          <li>
-            <strong>Eliminar:</strong> Borrar toda tu información desde la
-            configuración de la app
-          </li>
-          <li>
-            <strong>Revocar permisos:</strong> Desactivar acceso a Bluetooth,
-            segundo plano, etc.
-          </li>
-          <li>
-            <strong>Exportar datos:</strong> Obtener copia de tu información en
-            formato legible
-          </li>
-          <li>
-            <strong>Desinstalación completa:</strong> Toda la información se
-            elimina al desinstalar
-          </li>
-        </ul>
-
-        <h3>5. Retención de Datos</h3>
+      <div className="info-box">
         <p>
-          Los datos se conservan únicamente mientras la aplicación esté
-          instalada y en uso activo. Puedes eliminar toda la información en
-          cualquier momento desde la configuración de la aplicación. Al
-          desinstalar, todos los datos locales se borran automáticamente.
+          <strong>Importante:</strong> No compartimos tus datos personales con terceros sin tu consentimiento explícito.
+          Toda la información, incluidas las coordenadas de ubicación de errores, se procesa de manera segura y
+          confidencial.
         </p>
+      </div>
 
-        <h3>6. Cookies y Tecnologías de Seguimiento</h3>
-        <p>
-          <strong
-            >Bluetooth Ticket NO utiliza cookies, analytics ni servicios de
-            seguimiento de terceros.</strong
-          >
-          No recopilamos información de comportamiento ni creamos perfiles de
-          usuario.
-        </p>
+      <h3>3. Seguridad y Protección de Datos</h3>
+      <p>Implementamos múltiples capas de seguridad:</p>
+      <ul>
+        <li>
+          <strong>Almacenamiento local cifrado:</strong> Toda la información, incluidas coordenadas GPS, se guarda
+          cifrada en el dispositivo
+        </li>
+        <li>
+          <strong>Cifrado de comunicaciones:</strong> Conexiones socket seguras con protocolo wss:// para transmisión de
+          datos de error
+        </li>
+        <li>
+          <strong>Aislamiento de datos:</strong> Uso de almacenamiento privado de la aplicación con acceso restringido
+        </li>
+        <li>
+          <strong>Transmisión segura de ubicación:</strong> Las coordenadas GPS se envían encriptadas junto con reportes
+          de error
+        </li>
+        <li>
+          <strong>Anonimización de datos:</strong> Los datos de ubicación se desvinculan de información personal
+          identificable cuando es posible
+        </li>
+        <li>
+          <strong>Autenticación robusta:</strong> Control de acceso mediante tokens seguros y sesiones validadas
+        </li>
+        <li>
+          <strong>Retención limitada:</strong> Los datos de ubicación asociados a errores se eliminan después de su
+          análisis y resolución
+        </li>
+      </ul>
 
-        <h3>7. Privacidad de Menores</h3>
-        <p>
-          La aplicación está diseñada para uso profesional y empresarial. No
-          está dirigida a menores de 18 años y no recopilamos intencionalmente
-          información de menores.
-        </p>
+      <h3>4. Uso Específico de Datos de Ubicación</h3>
+      <p>
+        <strong>Recopilación Automática al Detectar Errores:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Trigger de captura:</strong> La ubicación se captura SOLO cuando se detecta un error, crash, fallo de
+          conexión o problema técnico
+        </li>
+        <li>
+          <strong>Datos incluidos en reporte de error:</strong>
+          <ul >
+            <li>Coordenadas GPS (latitud/longitud)</li>
+            <li>Precisión de la ubicación (metros)</li>
+            <li>Timestamp del error</li>
+            <li>Tipo y descripción del error</li>
+            <li>Estado de la aplicación (primer plano/segundo plano)</li>
+            <li>Información del dispositivo y sistema operativo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Funcionamiento en segundo plano:</strong> Si la app detecta un error mientras está en segundo plano,
+          automáticamente captura la ubicación en ese momento para el diagnóstico
+        </li>
+        <li>
+          <strong>Almacenamiento temporal:</strong> Las coordenadas se almacenan temporalmente hasta que se envía el
+          reporte de error al servidor
+        </li>
+        <li>
+          <strong>Análisis estadístico:</strong> Se utiliza para generar mapas de calor de errores y identificar zonas
+          problemáticas
+        </li>
+      </ul>
 
-        <h3>8. Cambios en la Política de Privacidad</h3>
+      <div className="info-box">
         <p>
-          Esta política puede actualizarse periódicamente para reflejar cambios
-          en nuestras prácticas o requisitos legales. La versión vigente siempre
-          estará disponible dentro de la aplicación. Los cambios significativos
-          se notificarán con 30 días de anticipación.
+          <strong>🔒 Garantía de Privacidad:</strong> La ubicación se captura exclusivamente para diagnóstico técnico y
+          mejora del servicio. NO se utiliza para:
+          <br />• Rastrear tus movimientos o rutinas
+          <br />• Publicidad geolocalizada
+          <br />• Venta o compartir con terceros
+          <br />• Perfilamiento de usuario
+          <br />• Ningún propósito fuera del diagnóstico de errores técnicos
         </p>
+      </div>
 
-        <h3>9. Transferencias Internacionales</h3>
-        <p>
-          Los datos se procesan y almacenan localmente en tu dispositivo. Si
-          utilizas servicios de sincronización en la nube (opcional), los datos
-          pueden transferirse a servidores ubicados en tu región geográfica bajo
-          protocolos de seguridad estándar de la industria.
-        </p>
+      <h3>5. Derechos del Usuario</h3>
+      <p>Como usuario de Bluetooth Ticket, tienes derecho a:</p>
+      <ul>
+        <li>
+          <strong>Acceder:</strong> Ver todos los datos almacenados, incluidos reportes de ubicación de errores
+        </li>
+        <li>
+          <strong>Rectificar:</strong> Modificar información incorrecta o desactualizada
+        </li>
+        <li>
+          <strong>Eliminar:</strong> Borrar toda tu información, incluidas coordenadas GPS registradas, desde la
+          configuración de la app
+        </li>
+        <li>
+          <strong>Revocar permisos:</strong> Desactivar acceso a ubicación, Bluetooth, segundo plano, etc. en cualquier
+          momento
+        </li>
+        <li>
+          <strong>Exportar datos:</strong> Obtener copia de tu información, incluidos reportes de error con ubicación
+        </li>
+        <li>
+          <strong>Desinstalación completa:</strong> Toda la información, incluidas ubicaciones, se elimina al
+          desinstalar
+        </li>
+        <li>
+          <strong>Opt-out de ubicación:</strong> Puedes denegar el permiso de ubicación, aunque esto limitará la
+          capacidad de diagnóstico de errores
+        </li>
+      </ul>
 
-        <h3>10. Contacto y Soporte</h3>
+      <h3>6. Retención de Datos</h3>
+      <p>Los datos se conservan según los siguientes criterios:</p>
+      <ul>
+        <li>
+          <strong>Datos operativos:</strong> Mientras la aplicación esté instalada y en uso activo
+        </li>
+        <li>
+          <strong>Reportes de error con ubicación:</strong> Se conservan por un máximo de 90 días después de su análisis
+          y resolución
+        </li>
+        <li>
+          <strong>Datos agregados y anonimizados:</strong> Pueden conservarse de forma indefinida con fines estadísticos
+          sin vinculación personal
+        </li>
+        <li>
+          <strong>Eliminación:</strong> Puedes eliminar toda la información en cualquier momento desde la configuración
+        </li>
+        <li>
+          <strong>Desinstalación:</strong> Al desinstalar la app, todos los datos locales, incluidas ubicaciones de
+          errores, se borran automáticamente
+        </li>
+      </ul>
+
+      <h3>7. Cookies y Tecnologías de Seguimiento</h3>
+      <p>
+        <strong>Bluetooth Ticket NO utiliza cookies, analytics ni servicios de seguimiento de terceros.</strong> No
+        recopilamos información de comportamiento ni creamos perfiles de usuario. El único seguimiento geográfico es la
+        captura de ubicación en eventos de error para diagnóstico técnico.
+      </p>
+
+      <h3>8. Privacidad de Menores</h3>
+      <p>
+        La aplicación está diseñada para uso profesional y empresarial. No está dirigida a menores de 18 años y no
+        recopilamos intencionalmente información, incluida ubicación, de menores.
+      </p>
+
+      <h3>9. Cambios en la Política de Privacidad</h3>
+      <p>
+        Esta política puede actualizarse periódicamente para reflejar cambios en nuestras prácticas o requisitos
+        legales. La versión vigente siempre estará disponible dentro de la aplicación. Los cambios significativos,
+        especialmente relacionados con el uso de ubicación, se notificarán con 30 días de anticipación.
+      </p>
+
+      <h3>10. Transferencias Internacionales</h3>
+      <p>
+        Los datos, incluidas las coordenadas de ubicación de errores, se procesan y almacenan bajo los siguientes
+        criterios:
+      </p>
+      <ul>
+        <li>Almacenamiento local primario en tu dispositivo</li>
+        <li>Transmisión segura de reportes de error a servidores en tu región geográfica</li>
+        <li>Cumplimiento con regulaciones de protección de datos aplicables (GDPR, CCPA, etc.)</li>
+        <li>Uso de protocolos de seguridad estándar de la industria para transferencias</li>
+      </ul>
+
+      <h3>11. Contacto y Soporte</h3>
+      <p>
+        Para consultas, solicitudes o ejercer tus derechos sobre privacidad de datos, incluida información sobre
+        ubicación recopilada, puedes contactarnos en:
+      </p>
+      <div className="info-box">
         <p>
-          Para consultas, solicitudes o ejercer tus derechos sobre privacidad de
-          datos, puedes contactarnos en:
+          <strong>Email:</strong> <a href="mailto:seedcodesv@gmail.com">seedcodesv@gmail.com</a>
+          <br />
+          <strong>Desarrollador:</strong> SeedCode Development Team
+          <br />
+          <strong>Tiempo de respuesta:</strong> 48-72 horas hábiles
+          <br />
+          <strong>Asunto recomendado:</strong> "Consulta sobre Datos de Ubicación - Bluetooth Ticket"
         </p>
-        <div class="info-box">
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:seedcodesv@gmail.com">seedcodesv@gmail.com</a><br />
-            <strong>Desarrollador:</strong> SeedCode Development Team<br />
-            <strong>Tiempo de respuesta:</strong> 48-72 horas hábiles
-          </p>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
